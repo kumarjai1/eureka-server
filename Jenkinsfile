@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine'
-            args '-v /tmp/.m2:/tmp/.m2'
+            args '-v /tmp/.m2:/tmp/.m2 -u root'
         }
     }
     options {
@@ -20,7 +20,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '**/target/surefire-reports/*.xml'
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             }
             post {
               always {
-                cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
+                cobertura coberturaReportFile: 'target/site/cobertura/coverage.xml'
                 }
             }
         }
