@@ -20,7 +20,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                    junit '**/target/surefire-reports/*.xml'
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             }
             post {
               always {
-                cobertura coberturaReportFile: 'target/site/cobertura/coverage.xml'
+                cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
                 }
             }
         }
