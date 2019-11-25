@@ -11,12 +11,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo mvn -B -DskipTests clean package'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'sudo mvn test'
+                sh 'mvn test'
             }
             post {
                 always {
@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Coverage') {
             steps {
-                sh 'sudo mvn cobertura:cobertura -Dcobertura.report.format=xml'
+                sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
             }
             post {
               always {
